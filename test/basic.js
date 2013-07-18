@@ -26,4 +26,7 @@ describe('basic test', function () {
   it('generates for string', function () {
     assert.equal(sig('0293029u3029302983502983502305820v0809z09g802930283jj;ka;dkfjalkejfoaef092305982035023'), 'cr5eVd');
   });
+  it('generates for null', function () {
+    assert.equal(sig({z: null}), 'bDPB_2');
+  });
 });
