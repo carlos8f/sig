@@ -1,6 +1,6 @@
 {
   "name": "sig",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "generate a signature for an object",
   "main": "index.js",
   "dependencies": {
