@@ -10,12 +10,15 @@ generate a signature for an object
 ## Usage
 
 `require('sig')` returns a function which takes any type of object, and returns
-a signature string.
+a signature string, generated from the sha1 of the
+[stable JSON representation.](https://github.com/substack/json-stable-stringify)
+Optionally you can pass an encoding as the second parameter, which can be `hex`
+(default), `binary`, `base64`, or `buffer`.
 
 ```js
 var sig = require('sig');
 
-sig({
+console.log(sig({
   id: 'oi3nfpXp02',
   num: 2,
   sub: {
@@ -23,12 +26,26 @@ sig({
     lol: false
   },
   arr: [23, 0]
-});
-// bHVm8f
+}));
+// 2491cd3eb77052427bfa91dfd6fb2824c5022eca
 
-sig('carlos');
-// dhNcWD
+console.log(sig('carlos'));
+// 07043187e80e6cf42d238b0f40fef9b68bb08242
+
+console.log(sig('carlos', 'base64'));
+// BwQxh+gObPQtI4sPQP75touwgkI=
+
+console.log(sig('carlos', 'buffer'));
+// <SlowBuffer 07 04 31 87 e8 0e 6c f4 2d 23 8b 0f 40 fe f9 b6 8b b0 82 42>
 ```
+
+## Upgrading from 0.x
+
+The old version (0.x) of `sig` used a CRC32 implementation which was a
+[bad idea](https://github.com/carlos8f/sig/issues/1) and was also about 5x
+slower than the newer, crypto-based solution. If you upgrade, be aware that
+the 1.x signatures are longer, hex-based (although other encodings can be generated)
+and not backwards-compatible with 0.x signatures.
 
 - - -
 

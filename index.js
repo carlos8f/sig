@@ -1,7 +1,6 @@
 var stringify = require('json-stable-stringify')
-  , crc32 = require('buffer-crc32')
-  , encoder = require('int-encoder')
+  , crypto = require('crypto')
 
-module.exports = function (obj) {
-  return encoder.encode(crc32.unsigned(stringify(obj)));
+module.exports = function (obj, encoding) {
+  return crypto.createHash('sha1').update(stringify(obj)).digest(encoding || 'hex');
 };

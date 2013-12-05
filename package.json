@@ -4,9 +4,7 @@
   "description": "generate a signature for an object",
   "main": "index.js",
   "dependencies": {
-    "buffer-crc32": "~0.2.1",
-    "json-stable-stringify": "~0.0.1",
-    "int-encoder": "~0.1.4"
+    "json-stable-stringify": "~0.0.1"
   },
   "devDependencies": {
     "mocha": "*"
@@ -21,11 +19,7 @@
   "homepage": "https://github.com/carlos8f/sig",
   "keywords": [
     "signature",
-    "crc",
-    "crc32",
-    "hash",
-    "string",
-    "checksum"
+    "hash"
   ],
   "author": "Carlos Rodriguez <carlos@s8f.org> (http://s8f.org/)",
   "license": "MIT",
