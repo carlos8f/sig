@@ -5,4 +5,7 @@ test:
 		--timeout 5s \
 		--require test/common.js
 
+bench:
+	node bench.js
+
 .PHONY: test
